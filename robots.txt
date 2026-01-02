@@ -1,5 +1,5 @@
 # robots.txt za RS Ketering Beograd
-# https://rs-ketering.com
+# https://rsketering.com
 
 
 User-agent: *
@@ -11,6 +11,6 @@ Disallow: /tmp/
 Disallow: /private/
 
 
-Sitemap: https://rs-ketering.com/sitemap.xml
+Sitemap: https://rsketering.com/sitemap.xml
 
 
