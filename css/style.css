@@ -544,7 +544,7 @@ header .container {
 
 .equal-height .contact-card,
 .equal-height .text-left {
-  height: 100%;
+  height: 400px;
 }
 
 .grid-3 {
@@ -913,6 +913,7 @@ header .container {
   background: var(--color-cream);
   padding-left: 10px;
   z-index: 1;
+  white-space: nowrap;
 }
 
 .menu-desc {
@@ -2442,6 +2443,10 @@ footer a:hover {
   .contact-card img {
   height: unset;
 }
+.equal-height .contact-card,
+.equal-height .text-left {
+  height: 100%;
+}
 }
 @media (max-width: 600px) {
   :root {
@@ -2481,6 +2486,12 @@ footer a:hover {
   }
   .hero .popust {
   width: 300px;
+}
+.menu-price {
+  font-size: .9rem;
+}
+.pricing-amount {
+  font-size: 1.5rem;
 }
 }
 @media (max-width: 480px) {
@@ -2584,7 +2595,7 @@ footer a:hover {
   }
   .hero .popust {
   font-size: 11px;
-  width: 350px;
+  width: 100%;
 }
 }
 
