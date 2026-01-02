@@ -1,0 +1,84 @@
+{
+  "name": "RS Ketering Beograd - Hrana napravljena s ljubavlju",
+  "short_name": "RS Ketering",
+  "description": "Ketering Beograd - hrana napravljena s ljubavlju za vaš užitak. Jedinstveni ukusi hrane koji osvajaju, visok kvalitet, povoljne cene i usluga zbog koje se vraćate.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#f9f8f4",
+  "background_color": "#f9f8f4",
+  "lang": "sr-RS",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-16w.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-32w.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "food",
+    "business",
+    "lifestyle"
+  ],
+  "shortcuts": [
+    {
+      "name": "Ketering za proslave",
+      "short_name": "Proslave",
+      "description": "Pogledajte našu ponudu za proslave",
+      "url": "//ketering-za-proslave/",
+      "icons": [
+        {
+          "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
+          "sizes": "180x180"
+        }
+      ]
+    },
+    {
+      "name": "Cene keteringa",
+      "short_name": "Cene",
+      "description": "Pogledajte naše cene",
+      "url": "//ketering-beograd-cene/",
+      "icons": [
+        {
+          "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
+          "sizes": "180x180"
+        }
+      ]
+    },
+    {
+      "name": "Kontakt",
+      "short_name": "Kontakt",
+      "description": "Kontaktirajte nas",
+      "url": "//ketering-kontakt/",
+      "icons": [
+        {
+          "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
+          "sizes": "180x180"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

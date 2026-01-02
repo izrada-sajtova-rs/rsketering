@@ -1,0 +1,218 @@
+# ========================================
+# .htaccess za RS Ketering Beograd
+# https://rs-ketering.com
+# ========================================
+
+# Omogući RewriteEngine
+RewriteEngine On
+
+# ========================================
+# 1. HTTPS REDIREKCIJA (SSL)
+# ========================================
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ========================================
+# 2. WWW NA NON-WWW REDIREKCIJA
+# ========================================
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+# ========================================
+# 3. CHARSET I ENCODING
+# ========================================
+AddDefaultCharset UTF-8
+<IfModule mod_mime.c>
+  AddCharset UTF-8 .html .htm .css .js .xml .json
+</IfModule>
+
+# ========================================
+# 4. KOMPRESIJA FAJLOVA (GZIP)
+# ========================================
+<IfModule mod_deflate.c>
+  # Kompresija HTML, CSS, JavaScript, Text, XML i fontova
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+  AddOutputFilterByType DEFLATE application/x-font
+  AddOutputFilterByType DEFLATE application/x-font-opentype
+  AddOutputFilterByType DEFLATE application/x-font-otf
+  AddOutputFilterByType DEFLATE application/x-font-truetype
+  AddOutputFilterByType DEFLATE application/x-font-ttf
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE font/opentype
+  AddOutputFilterByType DEFLATE font/otf
+  AddOutputFilterByType DEFLATE font/ttf
+  AddOutputFilterByType DEFLATE image/svg+xml
+  AddOutputFilterByType DEFLATE image/x-icon
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+</IfModule>
+
+# ========================================
+# 5. BROWSER CACHING
+# ========================================
+<IfModule mod_expires.c>
+  ExpiresActive On
+  
+  # Slike
+  ExpiresByType image/jpg "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  
+  # Video
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  
+  # Audio
+  ExpiresByType audio/mp3 "access plus 1 year"
+  ExpiresByType audio/mpeg "access plus 1 year"
+  
+  # CSS i JavaScript
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType application/x-javascript "access plus 1 month"
+  
+  # Fontovi
+  ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType font/otf "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType application/font-woff "access plus 1 year"
+  
+  # HTML i JSON
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
+</IfModule>
+
+# Cache-Control headers
+<IfModule mod_headers.c>
+  # 1 godina za slike i fontove
+  <FilesMatch "\.(jpg|jpeg|png|gif|webp|svg|ico|woff|woff2|ttf|otf)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+  
+  # 1 mesec za CSS i JS
+  <FilesMatch "\.(css|js)$">
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+  
+  # Bez keširanje za HTML
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+</IfModule>
+
+# ========================================
+# 6. SIGURNOSNE POSTAVKE
+# ========================================
+<IfModule mod_headers.c>
+  # Zaštita od XSS napada
+  Header set X-XSS-Protection "1; mode=block"
+  
+  # Zaštita od clickjacking
+  Header always append X-Frame-Options SAMEORIGIN
+  
+  # Zaštita od MIME type sniffing
+  Header set X-Content-Type-Options "nosniff"
+  
+  # Referrer Policy
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  
+  # Content Security Policy (prilagodite prema potrebi)
+  # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline';"
+  
+  # Ukloni signature servera
+  Header unset Server
+  Header unset X-Powered-By
+</IfModule>
+
+# Zabrani pristup osjetljivim fajlovoma
+<FilesMatch "^(\.htaccess|\.htpasswd|\.env|\.git|\.gitignore|composer\.json|composer\.lock|package\.json|package-lock\.json)$">
+  Order Allow,Deny
+  Deny from all
+</FilesMatch>
+
+# Blokiraj pristup .php fajlovima (ako ih nema na sajtu)
+# <FilesMatch "\.php$">
+#   Order Allow,Deny
+#   Deny from all
+# </FilesMatch>
+
+# ========================================
+# 7. CUSTOM ERROR STRANICE
+# ========================================
+# ErrorDocument 404 //404/
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
+ErrorDocument 404 //404/
+# ========================================
+# 8. DODATNE OPTIMIZACIJE
+# ========================================
+# Isključi server signature
+ServerSignature Off
+
+# Onemogući directory browsing
+Options -Indexes
+
+# Omogući FollowSymLinks
+Options +FollowSymLinks
+
+# ========================================
+# 9. URL REWRITE PRAVILA (ako su potrebna)
+# ========================================
+# Dodaj trailing slash automatski
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [L,R=301]
+
+# Ukloni .html ekstenziju (opciono)
+# RewriteCond %{REQUEST_FILENAME} !-d
+# RewriteCond %{REQUEST_FILENAME}\.html -f
+# RewriteRule ^([^\.]+)$ $1.html [NC,L]
+
+# ========================================
+# 10. MIME TYPES
+# ========================================
+<IfModule mod_mime.c>
+  # JavaScript
+  AddType application/javascript js
+  AddType application/json json
+  
+  # Video
+  AddType video/mp4 mp4
+  AddType video/webm webm
+  
+  # Audio
+  AddType audio/mpeg mp3
+  AddType audio/mp3 mp3
+  
+  # Fontovi
+  AddType font/ttf ttf
+  AddType font/otf otf
+  AddType font/woff woff
+  AddType font/woff2 woff2
+  
+  # Slike
+  AddType image/webp webp
+  AddType image/svg+xml svg svgz
+  
+  # XML
+  AddType application/xml xml
+</IfModule>
+

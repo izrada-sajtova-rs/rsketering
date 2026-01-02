@@ -1,0 +1,182 @@
+# ========================================
+# .gitignore za RS Ketering Beograd
+# https://rs-ketering.com
+# ========================================
+
+# ========================================
+# 1. OPERATING SYSTEM FAJLOVI
+# ========================================
+# Windows
+Thumbs.db
+Desktop.ini
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.VolumeIcon.icns
+
+# Linux
+.directory
+*~
+
+# ========================================
+# 2. IDE I EDITOR FAJLOVI
+# ========================================
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# JetBrains (WebStorm, PhpStorm, itd)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Atom
+.atom/
+
+# Vim
+.vim/
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+
+# Notepad++
+notepad++.backup
+
+# ========================================
+# 3. DESIGN FAJLOVI
+# ========================================
+# Adobe
+*.psd
+*.psb
+*.pdf
+*.ai
+*.eps
+*.indd
+*.inx
+
+# CorelDraw
+*.cdr
+
+# Figma
+*.fig
+
+# Sketch
+*.sketch
+
+# ========================================
+# 4. NODE.JS / NPM
+# ========================================
+node_modules/
+npm-debug.log
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+.npm/
+.eslintcache
+
+# ========================================
+# 5. ENVIRONMENT VARIJABLE I SECRETS
+# ========================================
+.env
+.env.local
+.env.*.local
+.env.production.local
+.env.development.local
+.env.test.local
+
+# ========================================
+# 6. DEPENDENCY FAJLOVI
+# ========================================
+composer.lock
+Gemfile.lock
+
+# ========================================
+# 7. BUILD OUTPUT
+# ========================================
+dist/
+build/
+out/
+.cache/
+.parcel-cache/
+
+# ========================================
+# 8. BACKUP FAJLOVI
+# ========================================
+*.bak
+*.backup
+*.tmp
+*.swp
+*.orig
+*.old
+
+# ========================================
+# 9. OS TEMP FAJLOVI
+# ========================================
+System Volume Information/
+$RECYCLE.BIN/
+
+# ========================================
+# 10. LOCAL TESTING / DEVELOPMENT
+# ========================================
+local/
+test-results/
+coverage/
+*.log
+logs/
+
+# ========================================
+# 11. SPECIFIČNO ZA OVAJ PROJEKAT (opciono)
+# ========================================
+# Local testing fajlovi
+config.local.js
+config.local.json
+
+# Temp fajlovi
+temp/
+tmp/
+_temp/
+
+# Backup fajlovi od HTML fajlova
+*.html.bak
+*.html.backup
+
+# ========================================
+# 12. DATABASE I PRIVATA
+# ========================================
+*.db
+*.sqlite
+*.sqlite3
+database.yml
+*.private.key
+
+# ========================================
+# 13. VEĆE DATOTEKE (opciono)
+# ========================================
+# Ako imate video fajlove koji su previše veliki
+# *.mp4
+# *.mov
+# *.avi
+
+# ========================================
+# IZUZETAK: OBLIGATORNO UKLJUČI
+# ========================================
+# Obavezno uključi važne fajlove
+!.gitkeep
+!.env.example
+!config.example.json

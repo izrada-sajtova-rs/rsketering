@@ -1,0 +1,16 @@
+# robots.txt za RS Ketering Beograd
+# https://rs-ketering.com
+
+
+User-agent: *
+Allow: /
+
+# Blokiramo privatne foldere
+Disallow: /cgi-bin/
+Disallow: /tmp/
+Disallow: /private/
+
+
+Sitemap: https://rs-ketering.com/sitemap.xml
+
+
