@@ -32,13 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  // Floating Call Button
-  const callBtn = document.getElementById("call-btn")
-  if (callBtn) {
-    callBtn.addEventListener("click", () => {
-      window.location.href = "tel:+381612144134"
-    })
-  }
+  // Floating Call Button - now using anchor with href and onclick, no JS needed
 
   // Floating Music Button
   const musicBtn = document.getElementById("music-btn")
