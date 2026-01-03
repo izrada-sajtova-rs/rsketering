@@ -158,16 +158,35 @@
   }
   </script>
   <link rel="manifest" href="/manifest.json">
-</head>
-<!-- Google tag (Google Ads) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'AW-17848865677');
-</script>
+  <!-- Google tag (Google Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17848865677');
+  </script>
+
+  <!-- Event snippet for Click to call conversion page -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17848865677/GbYqCO3uwtsbEI2ngL9C',
+        'value': 1.0,
+        'currency': 'RSD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+</head>
 <body>
     <header>
         <div class="container">
@@ -229,7 +248,7 @@
                             <li>&#10003; Obračun i plaćanje na svakih 15 dana</li>
                             <li>&#10003; Plan ishrane za timove, smene i posebne režime</li>
                         </ul>
-                        <a href="tel:+381612144134" class="btn btn-gold trackcall" title="RS ketering">Zatražite ponudu</a>
+                        <a href="tel:+381612144134" class="btn btn-gold trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381612144134');">Zatražite ponudu</a>
                     </div>
                 </div>
             </div>
@@ -530,7 +549,7 @@
                     <h4>Kontakt & Radno Vreme</h4>
                     <p>Tihomira Trajkovića 40</p>
                     <p>Beograd, Srbija</p>
-                    <p><a href="tel:+381612144134" class="trackcall" title="RS ketering">061 214 4134</a></p>
+                    <p><a href="tel:+381612144134" class="trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381612144134');">061 214 4134</a></p>
                     <p>Pon - Ned: 08:00 - 20:00</p>
                     
                 </div>

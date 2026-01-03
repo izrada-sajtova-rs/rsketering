@@ -158,16 +158,35 @@
   }
   </script>
   <link rel="manifest" href="/manifest.json">
-</head>
-<!-- Google tag (Google Ads) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'AW-17848865677');
-</script>
+  <!-- Google tag (Google Ads) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-17848865677');
+  </script>
+
+  <!-- Event snippet for Click to call conversion page -->
+  <script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof(url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+        'send_to': 'AW-17848865677/GbYqCO3uwtsbEI2ngL9C',
+        'value': 1.0,
+        'currency': 'RSD',
+        'event_callback': callback
+    });
+    return false;
+  }
+  </script>
+</head>
 <body>
     <header>
         <div class="container">
@@ -230,7 +249,7 @@
                             <li>&#10003; Vizuelna lepota koja nadograđuje ukus hrane</li>
                             <li>&#10003; Ukus zadovoljstva</li>
                         </ul>
-                        <a href="tel:+381612144134" class="btn btn-gold trackcall" title="RS ketering">Poručite</a>
+                        <a href="tel:+381612144134" class="btn btn-gold trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381612144134');">Poručite</a>
                     </div>
                 </div>
             </div>
@@ -244,7 +263,7 @@
                         <h2 class="section-heading">Korporativni ketering</h2>
                         <p>Ostavite utisak na svoje klijente i zaposlene. Nudimo profesionalna rešenja za poslovne ručkove, seminare, proslave firmi i tim bildinge.</p>
                         <p>Tačnost, kvalitet i profesionalna usluga su ono što nas izdvaja kao lidera za ketering cene Beograd u poslovnom sektoru.</p>
-                        <a href="tel:+381612144134" class="btn trackcall" title="RS ketering">Poručite</a>
+                        <a href="tel:+381612144134" class="btn trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381612144134');">Poručite</a>
                     </div>
                     <div class="img">
                         <picture>
@@ -391,7 +410,7 @@
                             <p class="offer-price"><del>53.350 RSD</del></p>
                             <p class="offer-price">47.700 RSD</p>
                             <div class="offer-button-wrapper">
-                                <a href="tel:+381612144134" class="btn btn-gold trackcall">Pozovite</a>
+                                <a href="tel:+381612144134" class="btn btn-gold trackcall" onclick="return gtag_report_conversion('tel:+381612144134');">Pozovite</a>
                             </div>
                         </div>
                         <div>
@@ -490,7 +509,7 @@
                             <p class="offer-price"><del>83.850 RSD</del></p>
                             <p class="offer-price">77.200 RSD</p>
                             <div class="offer-button-wrapper">
-                                <a href="tel:+381612144134" class="btn btn-gold trackcall">Pozovite</a>
+                                <a href="tel:+381612144134" class="btn btn-gold trackcall" onclick="return gtag_report_conversion('tel:+381612144134');">Pozovite</a>
                             </div>
                         </div>
                     </div>
@@ -579,7 +598,7 @@
                     <h4>Kontakt & Radno Vreme</h4>
                     <p>Tihomira Trajkovića 40</p>
                     <p>Beograd, Srbija</p>
-                    <p><a href="tel:+381612144134" class="trackcall" title="RS ketering">061 214 4134</a></p>
+                    <p><a href="tel:+381612144134" class="trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381612144134');">061 214 4134</a></p>
                     <p>Pon - Ned: 08:00 - 20:00</p>
                     
                 </div>
