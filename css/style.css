@@ -592,7 +592,7 @@ header .container {
   border-right: #121212 solid 2px;
   box-shadow: inset -5px -5px 13px rgb(0, 0, 0);
   border-bottom-right-radius: 60% 80%;
-  z-index: 6;
+  z-index: 1;
 }
 .hero-bg img {
   width: 100%;
