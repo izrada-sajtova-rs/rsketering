@@ -32,7 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 
-  // Floating Call Button - now using anchor with href and onclick, no JS needed
+  // Floating Call Button - now using anchor with href and onclick
+  const callBtn = document.getElementById("call-btn")
 
   // Floating Music Button
   const musicBtn = document.getElementById("music-btn")
