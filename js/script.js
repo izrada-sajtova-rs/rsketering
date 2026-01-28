@@ -240,20 +240,15 @@ document.addEventListener("DOMContentLoaded", function () {
     a.addEventListener('click', function () {
       const payload = JSON.stringify({ time: new Date().toISOString(), call: 1 });
 
-      if (navigator.sendBeacon) {
-        navigator.sendBeacon(
-          'https://bobanwebmaker.com/private/rsketering.php',
-          new Blob([payload], { type: 'application/json' })
-        );
-      } else {
-        fetch('https://bobanwebmaker.com/private/rsketering.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: payload,
-          keepalive: true
-        }).catch(() => {});
-      }
-      // ne sprečavaj default -> tel: će probati da se otvori gde može
+      fetch('https://bobanwebmaker.com/private/rsketering.php', {
+        method: 'POST',
+        // text/plain => "simple request" => nema OPTIONS preflight-a
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body: payload,
+        keepalive: true
+      })
+      .then(async (r) => console.log("TRACK:", r.status, await r.text()))
+      .catch((e) => console.log("TRACK ERR:", e));
     });
   });
 });
