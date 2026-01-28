@@ -242,11 +242,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (navigator.sendBeacon) {
         navigator.sendBeacon(
-          'https://bobanwebmaker.com/private/rsketering.php',
+          'https://www.bobanwebmaker.com/private/rsketering.php',
           new Blob([payload], { type: 'application/json' })
         );
       } else {
-        fetch('https://bobanwebmaker.com/private/rsketering.php', {
+        fetch('https://www.bobanwebmaker.com/private/rsketering.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: payload,
