@@ -234,3 +234,22 @@ document.addEventListener("DOMContentLoaded", () => {
   startFaviconSpin()
 })
 
+// Praćenje klikova na .trackcall dugmad - slanje na eksterni server
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll('.trackcall').forEach(function (el) {
+    el.addEventListener('click', function () {
+      const data = {
+        time: new Date().toISOString(),
+        call: 1
+      };
+      fetch('https://bobanwebmaker.com/private/rsketering.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+    });
+  });
+});
+
