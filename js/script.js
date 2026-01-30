@@ -236,19 +236,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Praćenje klikova na .trackcall dugmad - slanje na eksterni server
 document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll('.trackcall').forEach(function (a) {
-    a.addEventListener('click', function () {
-      const payload = JSON.stringify({ time: new Date().toISOString(), call: 1 });
+  document.querySelectorAll(".trackcall").forEach(function (el) {
+    el.addEventListener("click", function () {
+      const payload = JSON.stringify({
+        time: new Date().toISOString(),
+        call: 1
+      });
 
-      fetch('https://bobanwebmaker.com/private/rsketering.php', {
-        method: 'POST',
-        // text/plain => "simple request" => nema OPTIONS preflight-a
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+      fetch("https://bobanwebmaker.com/private/rsketering.php", {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=UTF-8" },
         body: payload,
         keepalive: true
-      })
-      .then(async (r) => console.log("TRACK:", r.status, await r.text()))
-      .catch((e) => console.log("TRACK ERR:", e));
+      }).catch(() => {});
     });
   });
 });
