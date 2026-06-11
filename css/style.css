@@ -2286,6 +2286,12 @@ footer a:hover {
   }
 }
 /* RESPONSIVE */
+@media (min-width: 1024px) and (max-width: 1160px) {
+  .nav-menu a {
+    font-size: 12.8px;
+    letter-spacing: unset;
+  }
+}
 @media (max-width: 1030px) {
   :root {
     --size-h1: 2.5rem;
