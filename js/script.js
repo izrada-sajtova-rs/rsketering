@@ -191,48 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.style.overflow = ""
   }
 
-  // Slow, infinite favicon rotation
-  const startFaviconSpin = () => {
-    const baseLink = document.querySelector('link[rel~="icon"][sizes="32x32"]') || document.querySelector('link[rel~="icon"]')
-    if (!baseLink) return
-
-    const img = new Image()
-    img.crossOrigin = "anonymous"
-    img.src = baseLink.href
-
-    img.onload = () => {
-      const size = img.naturalWidth || 32
-      const canvas = document.createElement("canvas")
-      canvas.width = size
-      canvas.height = size
-      const ctx = canvas.getContext("2d")
-
-      let angle = 0
-      let lastTime = performance.now()
-      const speed = (Math.PI * 2) / 8000 // one full spin every 8s
-
-      const render = (timestamp) => {
-        const delta = timestamp - lastTime
-        lastTime = timestamp
-        angle = (angle + delta * speed) % (Math.PI * 2)
-
-        ctx.clearRect(0, 0, size, size)
-        ctx.save()
-        ctx.translate(size / 2, size / 2)
-        ctx.rotate(angle)
-        ctx.drawImage(img, -size / 2, -size / 2, size, size)
-        ctx.restore()
-
-        baseLink.href = canvas.toDataURL("image/png")
-        requestAnimationFrame(render)
-      }
-
-      requestAnimationFrame(render)
-    }
-  }
-
-  startFaviconSpin()
-})
+  
 
 // Praćenje klikova na .trackcall dugmad - slanje na eksterni server
 document.addEventListener("DOMContentLoaded", function () {
