@@ -1,12 +1,24 @@
 
 @font-face {
   font-family: selna;
-  src: url(../Selna-Font/Selna\ Regular.otf);
+  src: url(../Selna-Font/selna-regular.woff2) format("woff2"),
+       url(../Selna-Font/Selna\ Regular.otf) format("opentype");
+  font-display: swap;
 }
 
 @font-face {
   font-family: allura;
-  src: url(../Allura/Allura-Regular.ttf);
+  src: url(../Allura/allura-regular.woff2) format("woff2"),
+       url(../Allura/Allura-Regular.ttf) format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Montserrat;
+  src: url(../Montserrat/montserrat-variable.woff2) format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
 }
 
 /* GLOBALNI CSS STILOVI */
@@ -445,6 +457,7 @@ header .container {
 
 .logo img {
   height: 30px;
+  width: auto;
 }
 
 .nav-menu {
@@ -1434,8 +1447,11 @@ header .container {
   right: 30px;
   color: white;
   font-size: 3rem;
+  line-height: 1;
   cursor: pointer;
   z-index: 2001;
+  background: none;
+  border: none;
 }
 
 .lightbox-nav {
@@ -1449,6 +1465,7 @@ header .container {
   user-select: none;
   z-index: 2001;
   background: rgba(0, 0, 0, 0.3);
+  border: none;
   border-radius: 50%;
 }
 
