@@ -47,7 +47,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../ketering-beograd-logo/ketering-beograd-logo-ketering-rs-16w.png">
   <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../Montserrat/montserrat-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../Selna-Font/selna-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../Allura/allura-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css?v=20261005b">
 
   <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
@@ -70,7 +73,7 @@
           "streetAddress": "Tihomira Trajkovića 40",
           "addressLocality": "Ugrinovci",
           "addressRegion": "Beograd",
-          "postalCode": "11000",
+          "postalCode": "11277",
           "addressCountry": "RS"
         },
         "telephone": "+381621062333",
@@ -125,7 +128,7 @@
         "name": "Kako mogu da poručim ketering?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ketering možete da poručite na nekoliko načina: pozovom nas na 062 106 2333, pošaljete poruku kroz formu na ovoj stranici, ili nam napišete email na info@rsketering.com. Naš tim će brzo odgovoriti i napraviti ponudu prilagođenu vašim potrebama."
+          "text": "Ketering možete da poručite na dva načina: pozovete nas na 062 106 2333 ili nam napišete email na info@rsketering.com. Naš tim će brzo odgovoriti i napraviti ponudu prilagođenu vašim potrebama."
         }
       },
       {
@@ -141,7 +144,7 @@
         "name": "Da li nudite dostavu i do koje lokacije?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Da, nudimo dostavu u Beogradu i okolini potpuno besplatno. Za lokacije van Beograda dostava je dostupna sa minimalnom napladom. Kontaktirajte nas sa tačnom adresom i saopštićemo vam cenu dostave."
+          "text": "Da, nudimo dostavu u Beogradu i okolini potpuno besplatno. Za lokacije van Beograda dostava je dostupna sa minimalnom naplatom. Kontaktirajte nas sa tačnom adresom i saopštićemo vam cenu dostave."
         }
       }
     ]
@@ -156,32 +159,19 @@
   gtag('js', new Date());
 
   gtag('config', 'G-NJQ414F1N8');
+  gtag('config', 'AW-17848865677');
 </script>
-  <!-- Google tag (Google Ads) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17848865677');
-  </script>
 
   <!-- Event snippet for Click to call conversion page -->
   <script>
   function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
+    // Ne blokiramo link: poziv mora da radi i kada je gtag.js blokiran
     gtag('event', 'conversion', {
         'send_to': 'AW-17848865677/GbYqCO3uwtsbEI2ngL9C',
         'value': 1.0,
-        'currency': 'RSD',
-        'event_callback': callback
+        'currency': 'RSD'
     });
-    return false;
+    return true;
   }
   </script>
 </head>
@@ -189,9 +179,9 @@
     <header>
         <div class="container">
             <a href="https://rsketering.com/" class="logo">
-                <img src="../ketering-beograd-logo/ketering-beograd-og-ketering-rs-black-40h.png" alt="Ketering Beograd - RS ketering logo">
+                <img src="../ketering-beograd-logo/ketering-beograd-og-ketering-rs-black-40h.png" alt="Ketering Beograd - RS ketering logo" width="217" height="40">
             </a>   
-            <button class="mobile-toggle">☰</button>
+            <button class="mobile-toggle" type="button" aria-label="Otvori navigaciju">☰</button>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="https://rsketering.com/">Početna</a></li>
@@ -201,7 +191,6 @@
                     <li><a href="/ketering-za-decije-rodjendane/">Dečiji</a></li>
                     <li><a href="/posni-ketering/">Posni</a></li>
                     <li><a href="/ketering-za-firme/">Za firme</a></li>
-                    <li><a href="/prostor-za-proslave/">Prostor</a></li>
                     <li><a href="/ketering-slike/">Galerija</a></li>
                     <li><a href="/ketering-kontakt/" class="active">Kontakt</a></li>
                 </ul>
@@ -213,9 +202,12 @@
         <section class="page-header">
             <div class="page-hero img">
                 <picture>
-                    <source media="(min-width: 1024px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1920w.jpg">
-                    <source media="(min-width: 768px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1030w.jpg">
-                    <img src="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-480w.jpg" alt="Ketering Beograd - RS ketering">
+                    <source media="(min-width: 1024px)" type="image/webp" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1920w.webp" width="1920" height="350">
+                    <source media="(min-width: 1024px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1920w.jpg" width="1920" height="350">
+                    <source media="(min-width: 768px)" type="image/webp" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1030w.webp" width="1030" height="430">
+                    <source media="(min-width: 768px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1030w.jpg" width="1030" height="430">
+                    <source type="image/webp" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-480w.webp" width="480" height="470">
+                    <img fetchpriority="high" src="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-480w.jpg" alt="Ketering Beograd - RS ketering" width="480" height="470">
                 </picture>
             </div>
             <div class="container">
@@ -236,7 +228,7 @@
                             <h4>Adresa</h4>
                             <p>
                                 Tihomira Trajkovića 40<br>
-                                11000 Beograd, Srbija
+                                11277 Beograd, Srbija
                             </p>
                         </div>
 
@@ -248,7 +240,7 @@
 
                         <div class="contact-block">
                             <h4>Radno vreme</h4>
-                            <p>Ponedeljak - Nedelja: 08:00 - 20:00</p>
+                            <p>Ponedeljak - Subota: 09:00 - 20:00</p>
                             
                         </div>
 
@@ -292,8 +284,9 @@
                             <button type="button" class="btn btn-gold btn-block trackform">Pošalji Poruku</button>
                         </form>
                         -->
-                        <img src="../ketering-beograd-images/keterign-beograd-rs-keterign-kontakt-500w.jpg" alt="Kontakt RS Ketering - ekskluzivni ketering" class="rounded-img" loading="lazy">
+                        <img src="../ketering-beograd-images/keterign-beograd-rs-keterign-kontakt-500w.webp" alt="Kontakt RS Ketering - ekskluzivni ketering" class="rounded-img" loading="lazy" width="500" height="700">
                     </div>
+                </div>
             </div>
         </section>
 
@@ -311,7 +304,7 @@
                             <span class="faq-toggle">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Ketering možete da poručite na nekoliko načina: pozovom nas na <a href="tel:+381621062333" class="link-gold-underline" onclick="return gtag_report_conversion('tel:+381621062333');">062 106 2333</a>, pošaljete poruku kroz formu na ovoj stranici, ili nam napišete email na <a href="mailto:info@rsketering.com" class="link-gold-underline">info@rsketering.com</a>. Naš tim će brzo odgovoriti i napraviti ponudu prilagođenu vašim potrebama.</p>
+                            <p>Ketering možete da poručite na dva načina: pozovete nas na <a href="tel:+381621062333" class="link-gold-underline" onclick="return gtag_report_conversion('tel:+381621062333');">062 106 2333</a> ili nam napišete email na <a href="mailto:info@rsketering.com" class="link-gold-underline">info@rsketering.com</a>. Naš tim će brzo odgovoriti i napraviti ponudu prilagođenu vašim potrebama.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -329,7 +322,7 @@
                             <span class="faq-toggle">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Da, nudimo dostavu u Beogradu i okolini potpuno besplatno. Za lokacije van Beograda dostava je dostupna sa minimalnom napladom. Kontaktirajte nas sa tačnom adresom i saopštićemo vam cenu dostave.</p>
+                            <p>Da, nudimo dostavu u Beogradu i okolini potpuno besplatno. Za lokacije van Beograda dostava je dostupna sa minimalnom naplatom. Kontaktirajte nas sa tačnom adresom i saopštićemo vam cenu dostave.</p>
                         </div>
                     </div>
                 </div>
@@ -369,7 +362,7 @@
                     <p>Tihomira Trajkovića 40</p>
                     <p>Beograd, Srbija</p>
                     <p><a href="tel:+381621062333" class="trackcall" title="RS ketering">062 106 2333</a></p>
-                    <p>Pon - Ned: 08:00 - 20:00</p>
+                    <p>Pon - Sub: 09:00 - 20:00</p>
                     
                 </div>
                 <div>
@@ -384,7 +377,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="copyright" title="Ketering Beograd - RS ketering" data-description="Ketering Beograd - RS ketering copyright">© 2025 RS ketering Beograd. Sva prava zadržana.</div>
-                <div><a href="https://izrada-sajtova-rs.com" target="_blank" rel="noopener" class="designer-credit trackbobanweb" title="Izrada sajtova RS" aria-label="Agencija izradu sajtova Izrada sajtova RS" data-description="Ovaj websajt je napravio izrada-sajtova-rs.com. izrada-sajtova-rs.com se bavi web dizajnom i izradom websajtova pretežno u Srbiji ali i u inostranstvu. Sve cene i detalje vezane za izradu i dizajin websajtova i web stranica možete videti ako kliknete na ovaj link.">Izrada sajtova RS</a></div>
+                <div><a href="https://izrada-sajtova-rs.com" target="_blank" rel="noopener" class="designer-credit trackbobanweb" title="Izrada sajtova RS" aria-label="Agencija izradu sajtova Izrada sajtova RS" data-description="Ovaj websajt je napravio izrada-sajtova-rs.com. izrada-sajtova-rs.com se bavi web dizajnom i izradom websajtova pretežno u Srbiji ali i u inostranstvu. Sve cene i detalje vezane za izradu i dizajn websajtova i web stranica možete videti ako kliknete na ovaj link.">Izrada sajtova RS</a></div>
             </div>
         </div>
     </footer>
@@ -394,8 +387,8 @@
     <button id="music-btn" class="floating-btn music-btn" title="RS ketering muzika" data-description="Ketering Beograd - RS ketering muzika">
         <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M1 13h-1v-1h1v1zm22-1h-1v1h1v-1zm-20-1h-1v3h1v-3zm18 0h-1v3h1v-3zm-14 0h-1v3h1v-3zm10-1h-1v5h1v-5zm-12 0h-1v5h1v-5zm14-1h-1v7h1v-7zm-10 0h-1v7h1v-7zm2-2h-1v10h1v-10zm4 0h-1v10h1v-10zm-2-2h-1v14h1v-14z"/></svg>
     </button>
-    <audio id="ketering-music" src="../ketering-beograd-music/ketering-beograd-music.mp3" loop></audio>
+    <audio id="ketering-music" src="../ketering-beograd-music/ketering-beograd-music.mp3" loop preload="none"></audio>
 
-    <script src="../js/script.js"></script>
+    <script src="../js/script.js?v=20261005b" defer></script>
 </body>
 </html>
