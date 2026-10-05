@@ -47,7 +47,10 @@
   <link rel="icon" type="image/png" sizes="16x16" href="../ketering-beograd-logo/ketering-beograd-logo-ketering-rs-16w.png">
   <link rel="icon" href="/favicon.ico">
   
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="../Montserrat/montserrat-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../Selna-Font/selna-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../Allura/allura-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/style.css?v=20261005b">
 
   <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
@@ -70,7 +73,7 @@
           "streetAddress": "Tihomira Trajkovića 40",
           "addressLocality": "Ugrinovci",
           "addressRegion": "Beograd",
-          "postalCode": "11000",
+          "postalCode": "11277",
           "addressCountry": "RS"
         },
         "telephone": "+381621062333",
@@ -124,32 +127,19 @@
   gtag('js', new Date());
 
   gtag('config', 'G-NJQ414F1N8');
+  gtag('config', 'AW-17848865677');
 </script>
-  <!-- Google tag (Google Ads) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17848865677');
-  </script>
 
   <!-- Event snippet for Click to call conversion page -->
   <script>
   function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
+    // Ne blokiramo link: poziv mora da radi i kada je gtag.js blokiran
     gtag('event', 'conversion', {
         'send_to': 'AW-17848865677/GbYqCO3uwtsbEI2ngL9C',
         'value': 1.0,
-        'currency': 'RSD',
-        'event_callback': callback
+        'currency': 'RSD'
     });
-    return false;
+    return true;
   }
   </script>
 </head>
@@ -159,10 +149,10 @@
     <header>
         <div class="container">
             <a href="https://rsketering.com/" class="logo">
-                <img src="../ketering-beograd-logo/ketering-beograd-og-ketering-rs-black-40h.png" alt="Ketering Beograd - RS ketering logo">
+                <img src="../ketering-beograd-logo/ketering-beograd-og-ketering-rs-black-40h.png" alt="Ketering Beograd - RS ketering logo" width="217" height="40">
             </a>   
             
-            <button class="mobile-toggle">☰</button>
+            <button class="mobile-toggle" type="button" aria-label="Otvori navigaciju">☰</button>
             
             <nav class="nav-menu">
                 <ul>
@@ -173,7 +163,6 @@
                     <li><a href="/ketering-za-decije-rodjendane/">Dečiji</a></li>
                     <li><a href="/posni-ketering/">Posni</a></li>
                     <li><a href="/ketering-za-firme/">Za firme</a></li>
-                    <li><a href="/prostor-za-proslave/">Prostor</a></li>
                     <li><a href="/ketering-slike/" class="active">Galerija</a></li>
                     <li><a href="/ketering-kontakt/">Kontakt</a></li>
                 </ul>
@@ -186,9 +175,12 @@
         <section class="page-header">
             <div class="page-hero img">
                 <picture>
-                    <source media="(min-width: 1024px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1920w.jpg">
-                    <source media="(min-width: 768px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1030w.jpg">
-                    <img src="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-480w.jpg" alt="Ketering Beograd - RS ketering">
+                    <source media="(min-width: 1024px)" type="image/webp" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1920w.webp" width="1920" height="350">
+                    <source media="(min-width: 1024px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1920w.jpg" width="1920" height="350">
+                    <source media="(min-width: 768px)" type="image/webp" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1030w.webp" width="1030" height="430">
+                    <source media="(min-width: 768px)" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-1030w.jpg" width="1030" height="430">
+                    <source type="image/webp" srcset="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-480w.webp" width="480" height="470">
+                    <img fetchpriority="high" src="../ketering-beograd-images/keterign-beograd-rs-keterign-page-hero2-480w.jpg" alt="Ketering Beograd - RS ketering" width="480" height="470">
                 </picture>
             </div>
             <div class="container">
@@ -203,182 +195,228 @@
                 <div class="gallery-grid">
                     <div class="gallery-item img">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-1-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-1-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-1-1200w.webp" width="1200" height="901">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-1-1200w.jpg" width="1200" height="901">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-1-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-1-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-2-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-2-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-2-1200w.webp" width="1200" height="901">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-2-1200w.jpg" width="1200" height="901">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-2-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-2-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-3-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-3-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
-                    </div>
-                    <div class="gallery-item img">
-                        <picture>
-                            <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-4-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-4-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
-                        </picture>
-                        <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
-                    </div>
-                    <div class="gallery-item img">
-                        <picture>
-                            <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-5-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-5-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-3-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-3-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-3-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-3-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-21-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-21-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-4-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-4-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-4-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-4-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-6-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-6-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-5-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-5-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-5-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-5-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
+                        </picture>
+                        <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item img">
+                        <picture>
+                            <!-- 800x600 px -->
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-21-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-21-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-21-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-21-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
+                        </picture>
+                        <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
+                    </div>
+                    <div class="gallery-item img">
+                        <picture>
+                            <!-- 800x600 px -->
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-6-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-6-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-6-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-6-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 1920x1080 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-7-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-7-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-7-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-7-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-7-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-7-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-8-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-8-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-8-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-8-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-8-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-8-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-9-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-9-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-9-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-9-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-9-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-9-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-10-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-10-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-10-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-10-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-10-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-10-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-11-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-11-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-11-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-11-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-11-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-11-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-12-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-12-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-12-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-12-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-12-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-12-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-13-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-13-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-13-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-13-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-13-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-13-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-14-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-14-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-14-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-14-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-14-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-14-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-15-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-15-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-15-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-15-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-15-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-15-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-16-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-16-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-16-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-16-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-16-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-16-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 1920x1080 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-17-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-17-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-17-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-17-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-17-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-17-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-18-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-18-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-18-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-18-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-18-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-18-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-19-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-19-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-19-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-19-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-19-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-19-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-20-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-20-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-20-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-20-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-20-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-20-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-22-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-22-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-22-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-22-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-22-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-22-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-23-1200w.jpg">
-                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-23-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-23-1200w.webp" width="1200" height="900">
+                            <source media="(min-width: 600px)" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-23-1200w.jpg" width="1200" height="900">
+                            <source type="image/webp" srcset="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-23-600w.webp" width="600" height="450">
+                            <img src="../ketering-beograd-images/ketering-slike/keterign-beograd-rs-keterign-slike-23-600w.jpg" alt="RS ketering - ketering slike" title="ketering slike" data-description="ketering slike" loading="lazy" width="600" height="450">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
@@ -418,7 +456,7 @@
                     <p>Tihomira Trajkovića 40</p>
                     <p>Beograd, Srbija</p>
                     <p><a href="tel:+381621062333" class="trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381621062333');">062 106 2333</a></p>
-                    <p>Pon - Ned: 08:00 - 20:00</p>
+                    <p>Pon - Sub: 09:00 - 20:00</p>
                     
                 </div>
                 <div>
@@ -433,7 +471,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="copyright" title="Ketering Beograd - RS ketering" data-description="Ketering Beograd - RS ketering copyright">© 2025 RS ketering Beograd. Sva prava zadržana.</div>
-                <div><a href="https://izrada-sajtova-rs.com" target="_blank" rel="noopener" class="designer-credit trackbobanweb" title="Izrada sajtova RS" aria-label="Agencija izradu sajtova Izrada sajtova RS" data-description="Ovaj websajt je napravio izrada-sajtova-rs.com. izrada-sajtova-rs.com se bavi web dizajnom i izradom websajtova pretežno u Srbiji ali i u inostranstvu. Sve cene i detalje vezane za izradu i dizajin websajtova i web stranica možete videti ako kliknete na ovaj link.">Izrada sajtova RS</a></div>
+                <div><a href="https://izrada-sajtova-rs.com" target="_blank" rel="noopener" class="designer-credit trackbobanweb" title="Izrada sajtova RS" aria-label="Agencija izradu sajtova Izrada sajtova RS" data-description="Ovaj websajt je napravio izrada-sajtova-rs.com. izrada-sajtova-rs.com se bavi web dizajnom i izradom websajtova pretežno u Srbiji ali i u inostranstvu. Sve cene i detalje vezane za izradu i dizajn websajtova i web stranica možete videti ako kliknete na ovaj link.">Izrada sajtova RS</a></div>
             </div>
         </div>
     </footer>
@@ -443,8 +481,8 @@
     <button id="music-btn" class="floating-btn music-btn" title="RS ketering muzika" data-description="Ketering Beograd - RS ketering muzika">
         <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M1 13h-1v-1h1v1zm22-1h-1v1h1v-1zm-20-1h-1v3h1v-3zm18 0h-1v3h1v-3zm-14 0h-1v3h1v-3zm10-1h-1v5h1v-5zm-12 0h-1v5h1v-5zm14-1h-1v7h1v-7zm-10 0h-1v7h1v-7zm2-2h-1v10h1v-10zm4 0h-1v10h1v-10zm-2-2h-1v14h1v-14z"/></svg>
     </button>
-    <audio id="ketering-music" src="../ketering-beograd-music/ketering-beograd-music.mp3" loop></audio>
+    <audio id="ketering-music" src="../ketering-beograd-music/ketering-beograd-music.mp3" loop preload="none"></audio>
 
-    <script src="../js/script.js"></script>
+    <script src="../js/script.js?v=20261005b" defer></script>
 </body>
 </html>
