@@ -27,13 +27,7 @@
       "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
       "sizes": "180x180",
       "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ],
   "categories": [
@@ -46,7 +40,7 @@
       "name": "Ketering za proslave",
       "short_name": "Proslave",
       "description": "Pogledajte našu ponudu za proslave",
-      "url": "//ketering-za-proslave/",
+      "url": "/ketering-za-proslave/",
       "icons": [
         {
           "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
@@ -58,7 +52,7 @@
       "name": "Cene keteringa",
       "short_name": "Cene",
       "description": "Pogledajte naše cene",
-      "url": "//ketering-beograd-cene/",
+      "url": "/ketering-beograd-cene/",
       "icons": [
         {
           "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",
@@ -70,7 +64,7 @@
       "name": "Kontakt",
       "short_name": "Kontakt",
       "description": "Kontaktirajte nas",
-      "url": "//ketering-kontakt/",
+      "url": "/ketering-kontakt/",
       "icons": [
         {
           "src": "/ketering-beograd-logo/ketering-beograd-logo-ketering-rs-180w.png",

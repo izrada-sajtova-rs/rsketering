@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="canonical" href="https://rsketering.com" />
+  <link rel="canonical" href="https://rsketering.com/" />
 
   <title>Ketering Beograd - Hrana napravljena s ljubavlju | RS Ketering</title>
   <meta name="description" content="Ketering Beograd - hrana napravljena s ljubavlju za vaš užitak. Jedinstveni ukusi hrane koji osvajaju, visok kvalitet, povoljne cene i usluga zbog koje se vraćate.">
@@ -12,7 +12,7 @@
 
   <!-- OPEN GRAPH -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rsketering.com">
+  <meta property="og:url" content="https://rsketering.com/">
   <meta property="og:title" content="Ketering Beograd - Hrana napravljena s ljubavlju | RS Ketering">
   <meta property="og:description" content="Ketering Beograd - hrana napravljena s ljubavlju za vaš užitak. Jedinstveni ukusi hrane koji osvajaju, visok kvalitet, povoljne cene i usluga zbog koje se vraćate.">
   <meta property="og:image" content="https://rsketering.com/ketering-beograd-logo/ketering-beograd-og-ketering-rs-1200w.jpg">
@@ -24,7 +24,7 @@
 
   <!-- TWITTER -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://rsketering.com">
+  <meta name="twitter:url" content="https://rsketering.com/">
   <meta name="twitter:title" content="Ketering Beograd - Hrana napravljena s ljubavlju | RS Ketering">
   <meta name="twitter:description" content="Ketering Beograd - hrana napravljena s ljubavlju za vaš užitak. Jedinstveni ukusi hrane koji osvajaju, visok kvalitet, povoljne cene i usluga zbog koje se vraćate.">
   <meta name="twitter:image" content="https://rsketering.com/ketering-beograd-logo/ketering-beograd-og-ketering-rs-1200w.jpg">
@@ -46,7 +46,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="ketering-beograd-logo/ketering-beograd-logo-ketering-rs-32w.png">
   <link rel="icon" type="image/png" sizes="16x16" href="ketering-beograd-logo/ketering-beograd-logo-ketering-rs-16w.png">
 
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="preload" href="Montserrat/montserrat-variable.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Selna-Font/selna-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="Allura/allura-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css?v=20261005b">
 
   <!-- STRUCTURED DATA -->
   <script type="application/ld+json">
@@ -69,7 +72,7 @@
           "streetAddress": "Tihomira Trajkovića 40",
           "addressLocality": "Ugrinovci",
           "addressRegion": "Beograd",
-          "postalCode": "11000",
+          "postalCode": "11277",
           "addressCountry": "RS"
         },
         "telephone": "+381621062333",
@@ -124,7 +127,7 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Da li nudite opcije za posebne diete (vegansku, bez glutena...)?",
+        "name": "Da li nudite opcije za posebne dijete (vegansku, bez glutena...)?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Apsolutno! Nudimo vegansku, vegetarijansku, bez glutena, bez laktoze i još mnogo drugih opcija. Kontaktirajte nas sa specifičnim zahtevima i kreiramo personalizovan meni za vašu grupu."
@@ -135,7 +138,7 @@
         "name": "Koja je teritorija besplatne dostave?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Dostavljamo besplatno na Beograda i okoline. Za druge lokacije, kontaktirajte nas za cenu dostave."
+          "text": "Dostavljamo besplatno na teritoriji Beograda i okoline. Za druge lokacije, kontaktirajte nas za cenu dostave."
         }
       },
       {
@@ -166,32 +169,19 @@
   gtag('js', new Date());
 
   gtag('config', 'G-NJQ414F1N8');
+  gtag('config', 'AW-17848865677');
 </script>
-  <!-- Google tag (Google Ads) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17848865677"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'AW-17848865677');
-  </script>
 
   <!-- Event snippet for Click to call conversion page -->
   <script>
   function gtag_report_conversion(url) {
-    var callback = function () {
-      if (typeof(url) != 'undefined') {
-        window.location = url;
-      }
-    };
+    // Ne blokiramo link: poziv mora da radi i kada je gtag.js blokiran
     gtag('event', 'conversion', {
         'send_to': 'AW-17848865677/GbYqCO3uwtsbEI2ngL9C',
         'value': 1.0,
-        'currency': 'RSD',
-        'event_callback': callback
+        'currency': 'RSD'
     });
-    return false;
+    return true;
   }
   </script>
 </head>
@@ -200,9 +190,9 @@
     <header>
         <div class="container">
             <a href="https://rsketering.com/" class="logo">
-                <img src="ketering-beograd-logo/ketering-beograd-og-ketering-rs-black-40h.png" alt="Ketering Beograd - RS ketering logo">
+                <img src="ketering-beograd-logo/ketering-beograd-og-ketering-rs-black-40h.png" alt="Ketering Beograd - RS ketering logo" width="217" height="40">
             </a>            
-            <button class="mobile-toggle">☰</button>
+            <button class="mobile-toggle" type="button" aria-label="Otvori navigaciju">☰</button>
             <nav class="nav-menu">
                 <ul>
                     <li><a href="https://rsketering.com/" class="active">Početna</a></li>
@@ -212,7 +202,6 @@
                     <li><a href="/ketering-za-decije-rodjendane/">Dečiji</a></li>
                     <li><a href="/posni-ketering/">Posni</a></li>
                     <li><a href="/ketering-za-firme/">Za firme</a></li>
-                    <li><a href="/prostor-za-proslave/">Prostor</a></li>
                     <li><a href="/ketering-slike/">Galerija</a></li>
                     <li><a href="/ketering-kontakt/">Kontakt</a></li>
                 </ul>
@@ -224,9 +213,12 @@
         <section class="hero hero-left">
             <div class="hero-bg">
                 <picture>
-                    <source media="(min-width: 1030px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-hero-1920w.jpg">
-                    <source media="(min-width: 480px)" srcset="ketering-beograd-images/ketering-beograd-ketering-rs-1030w.jpg">
-                    <img src="ketering-beograd-images/ketering-beograd-ketering-rs-480w.jpg" alt="Ketering  Beograd - RS ketering" fetchpriority="high">
+                    <source media="(min-width: 1030px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-hero-1920w.webp" width="1920" height="1080">
+                    <source media="(min-width: 1030px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-hero-1920w.jpg" width="1920" height="1080">
+                    <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/ketering-beograd-ketering-rs-1030w.webp" width="1030" height="1000">
+                    <source media="(min-width: 480px)" srcset="ketering-beograd-images/ketering-beograd-ketering-rs-1030w.jpg" width="1030" height="1000">
+                    <source type="image/webp" srcset="ketering-beograd-images/ketering-beograd-ketering-rs-480w.webp" width="480" height="700">
+                    <img src="ketering-beograd-images/ketering-beograd-ketering-rs-480w.jpg" alt="Ketering  Beograd - RS ketering" fetchpriority="high" width="480" height="700">
                 </picture>
             </div>
             <div class="hero-content container">
@@ -356,9 +348,12 @@
                     <div class="img">
                         <picture>
                             <!-- 800x600 px -->
-                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-1024w.jpg">
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-480w.jpg" alt="Ketering Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-1024w.webp" width="1024" height="1024">
+                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-1024w.jpg" width="1024" height="1024">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-600w.webp" width="600" height="600">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-600w.jpg" width="600" height="600">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-480w.webp" width="490" height="490">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-480w.jpg" alt="Ketering Beograd - RS ketering" loading="lazy" width="490" height="490">
                         </picture>
                         <div class="experience-badge">
                             <span class="experience-years">15+</span>
@@ -372,9 +367,12 @@
         <section class="section-padding stats-section">
             <div class="stats-bg-image">
                 <picture>
-                    <source media="(min-width: 1030px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-1920w.jpg">
-                    <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-1030w.jpg">
-                    <img src="ketering-beograd-images/keterign-beograd-rs-keterign-counter-480w.jpg" alt="RS Ketering statistika" loading="lazy">
+                    <source media="(min-width: 1030px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-1920w.webp" width="1920" height="429">
+                    <source media="(min-width: 1030px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-1920w.jpg" width="1920" height="429">
+                    <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-1030w.webp" width="1030" height="580">
+                    <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-1030w.jpg" width="1030" height="580">
+                    <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-counter-480w.webp" width="480" height="999">
+                    <img src="ketering-beograd-images/keterign-beograd-rs-keterign-counter-480w.jpg" alt="RS Ketering statistika" loading="lazy" width="480" height="999">
                 </picture>
             </div>
             <div class="container">
@@ -447,9 +445,12 @@
                 <div class="grid-3">
                     <div class="service-item">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-1000w.jpg">
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-480w.jpg" alt="Ketering za proslave Beograd - RS ketering " loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-1000w.webp" width="1000" height="250">
+                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-1000w.jpg" width="1000" height="250">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-proslave-480w.jpg" alt="Ketering za proslave Beograd - RS ketering " loading="lazy" width="480" height="250">
                         </picture>
                         <h3>Ketering za proslave</h3>
                         <p>Ketering za proslave - hrana pripremljena s ljubavlju, da se smeh čuje glasnije i trenuci pamte duže. Paketi za svaku priliku</p>
@@ -458,9 +459,12 @@
 
                     <div class="service-item">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-1000w.jpg">
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-480w.jpg" alt="Posni ketering Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-1000w.webp" width="1000" height="250">
+                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-1000w.jpg" width="1000" height="250">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-posni-ketering-480w.jpg" alt="Posni ketering Beograd - RS ketering" loading="lazy" width="480" height="250">
                         </picture>
                         <h3>Posni ketering</h3>
                         <p>Posni ketering - pažljivo birani sastojci, čisti ukusi i hrana pripremljena s poštovanjem, za trenutke kada jednostavnost govori najviše.</p>
@@ -469,19 +473,25 @@
 
                     <div class="service-item">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-1000w.jpg">
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-480w.jpg" alt="Ketering za dečije rođendane Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-1000w.webp" width="1000" height="250">
+                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-1000w.jpg" width="1000" height="250">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-480w.jpg" alt="Ketering za dečije rođendane Beograd - RS ketering" loading="lazy" width="480" height="250">
                         </picture>
                         <h3>Ketering za dečije rođendane</h3>
-                        <p>Ketering za dečije rođendane - šareni ukusi, bezbrižni zalogaji i hrana pripremljena s ljubavlju, da svaki osmeh traje duže.
+                        <p>Ketering za dečije rođendane - šareni ukusi, bezbrižni zalogaji i hrana pripremljena s ljubavlju, da svaki osmeh traje duže.</p>
                         <a href="/ketering-za-decije-rodjendane/" class="service-link">Pogledajte &#8594;</a>
                     </div>
                     <div class="service-item">
                         <picture>
-                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-1000w.jpg">
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-decije-rodjendane-480w.jpg" alt="Ketering za firme Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 600px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-firme-1000w.webp" width="1000" height="250">
+                            <source media="(min-width: 600px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-firme-1000w.jpg" width="1000" height="250">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-firme-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-firme-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-firme-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-ketering-za-firme-480w.jpg" alt="Ketering za firme Beograd - RS ketering" loading="lazy" width="480" height="250">
                         </picture>
                         <h3>Ketering za firme</h3>
                         <p>Ketering za firme - precizno pripremljeni ukusi, pouzdana usluga i hrana koja prati ritam poslovnih trenutaka s lakoćom.</p>
@@ -539,22 +549,28 @@
                 <div class="gallery-grid gallery-preview">
                      <div class="gallery-item img">
                         <picture>
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje-480w.jpg" alt="Ketering  Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje-480w.jpg" alt="Ketering  Beograd - RS ketering" loading="lazy" width="480" height="250">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje2-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje2-480w.jpg" alt="Ketering  Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje2-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje2-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje2-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje2-480w.jpg" alt="Ketering  Beograd - RS ketering" loading="lazy" width="480" height="250">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
                     <div class="gallery-item img">
                         <picture>
-                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje3-600w.jpg">
-                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje3-480w.jpg" alt="Ketering  Beograd - RS ketering" loading="lazy">
+                            <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje3-600w.webp" width="600" height="250">
+                            <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje3-600w.jpg" width="600" height="250">
+                            <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje3-480w.webp" width="480" height="250">
+                            <img src="ketering-beograd-images/keterign-beograd-rs-keterign-iz-nase-kuhinje3-480w.jpg" alt="Ketering  Beograd - RS ketering" loading="lazy" width="480" height="250">
                         </picture>
                         <div class="gallery-overlay"><span class="zoom-icon">+</span></div>
                     </div>
@@ -641,7 +657,7 @@
                             Show cooking stanica je bila vrhunac večeri, a osoblje je bilo izuzetno ljubazno i profesionalno. Definitivno ćemo ih zvati ponovo!"
                         </p>
                         <div class="testimonial-author">
-                            <h4>Ana Čorđević</h4>
+                            <h4>Ana Đorđević</h4>
                             <p>PR Menadžer - Marketing Agencija</p>
                         </div>
                     </div>
@@ -652,7 +668,7 @@
         <section class="section-padding faq-section">
             <div class="container">
                 <div class="section-header">
-                    <h4 class="text-gold eyebrow">Često pitanja</h4>
+                    <h4 class="text-gold eyebrow">Česta pitanja</h4>
                     <h2>Često postavljana pitanja</h2>
                     <p>Pronađite odgovore na najčešće postavljana pitanja o našim uslugama</p>
                 </div>
@@ -660,7 +676,7 @@
                 <div class="faq-grid">
                     <div class="faq-item">
                         <button class="faq-question">
-                            <span>Da li nudite opcije za posebne diete (vegansku, bez glutena...)?</span>
+                            <span>Da li nudite opcije za posebne dijete (vegansku, bez glutena...)?</span>
                             <span class="faq-toggle">+</span>
                         </button>
                         <div class="faq-answer">
@@ -682,7 +698,7 @@
                             <span class="faq-toggle">+</span>
                         </button>
                         <div class="faq-answer">
-                            <p>Dostavljamo besplatno na Beograda i okoline. Za druge lokacije, kontaktirajte nas za cenu dostave.</p>
+                            <p>Dostavljamo besplatno na teritoriji Beograda i okoline. Za druge lokacije, kontaktirajte nas za cenu dostave.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -709,9 +725,12 @@
         <section class="section-padding cta-section">
             <div class="cta-bg-image">
                 <picture>
-                    <source media="(min-width: 1030px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-1920w.jpg">
-                    <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-1030w.jpg">
-                    <img src="ketering-beograd-images/keterign-beograd-rs-keterign-cta-480w.jpg" alt="Ketering  Beograd - RS ketering" aria-hidden="true" loading="lazy">
+                    <source media="(min-width: 1030px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-1920w.webp" width="1920" height="350">
+                    <source media="(min-width: 1030px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-1920w.jpg" width="1920" height="350">
+                    <source media="(min-width: 480px)" type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-1030w.webp" width="1030" height="350">
+                    <source media="(min-width: 480px)" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-1030w.jpg" width="1030" height="350">
+                    <source type="image/webp" srcset="ketering-beograd-images/keterign-beograd-rs-keterign-cta-480w.webp" width="480" height="360">
+                    <img src="ketering-beograd-images/keterign-beograd-rs-keterign-cta-480w.jpg" alt="Ketering  Beograd - RS ketering" aria-hidden="true" loading="lazy" width="480" height="360">
                 </picture>
             </div>
             <div class="cta-overlay"></div>
@@ -754,7 +773,7 @@
                     <p>Tihomira Trajkovića 40</p>
                     <p>Beograd, Srbija</p>
                     <p><a href="tel:+381621062333" class="trackcall" title="RS ketering" onclick="return gtag_report_conversion('tel:+381621062333');">062 106 2333</a></p>
-                    <p>Pon - Ned: 08:00 - 20:00</p>
+                    <p>Pon - Sub: 09:00 - 20:00</p>
                     
                 </div>
                 <div>
@@ -769,7 +788,7 @@
             </div>
             <div class="footer-bottom">
                 <div class="copyright" title="Ketering Beograd - RS ketering" data-description="Ketering Beograd - RS ketering copyright">© 2025 RS ketering Beograd. Sva prava zadržana.</div>
-                <div><a href="https://izrada-sajtova-rs.com" target="_blank" rel="noopener" class="designer-credit trackbobanweb" title="Izrada sajtova RS" aria-label="Agencija izradu sajtova Izrada sajtova RS" data-description="Ovaj websajt je napravio izrada-sajtova-rs.com. izrada-sajtova-rs.com se bavi web dizajnom i izradom websajtova pretežno u Srbiji ali i u inostranstvu. Sve cene i detalje vezane za izradu i dizajin websajtova i web stranica možete videti ako kliknete na ovaj link.">Izrada sajtova RS</a></div>
+                <div><a href="https://izrada-sajtova-rs.com" target="_blank" rel="noopener" class="designer-credit trackbobanweb" title="Izrada sajtova RS" aria-label="Agencija izradu sajtova Izrada sajtova RS" data-description="Ovaj websajt je napravio izrada-sajtova-rs.com. izrada-sajtova-rs.com se bavi web dizajnom i izradom websajtova pretežno u Srbiji ali i u inostranstvu. Sve cene i detalje vezane za izradu i dizajn websajtova i web stranica možete videti ako kliknete na ovaj link.">Izrada sajtova RS</a></div>
             </div>
         </div>
     </footer>
@@ -779,8 +798,8 @@
     <button id="music-btn" class="floating-btn music-btn" title="RS ketering muzika" data-description="Ketering Beograd - RS ketering muzika">
         <svg xmlns="http://www.w3.org/2000/svg" fill="white" width="24" height="24" viewBox="0 0 24 24"><path d="M1 13h-1v-1h1v1zm22-1h-1v1h1v-1zm-20-1h-1v3h1v-3zm18 0h-1v3h1v-3zm-14 0h-1v3h1v-3zm10-1h-1v5h1v-5zm-12 0h-1v5h1v-5zm14-1h-1v7h1v-7zm-10 0h-1v7h1v-7zm2-2h-1v10h1v-10zm4 0h-1v10h1v-10zm-2-2h-1v14h1v-14z"/></svg>
     </button>
-    <audio id="ketering-music" src="ketering-beograd-music/ketering-beograd-music.mp3" loop></audio>
+    <audio id="ketering-music" src="ketering-beograd-music/ketering-beograd-music.mp3" loop preload="none"></audio>
 
-    <script src="js/script.js"></script>
+    <script src="js/script.js?v=20261005b" defer></script>
 </body>
 </html>

@@ -1,113 +1,77 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <!-- Početna strana -->
   <url>
     <loc>https://rsketering.com/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- O nama -->
   <url>
     <loc>https://rsketering.com/rs-ketering/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- Cene -->
   <url>
     <loc>https://rsketering.com/ketering-beograd-cene/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- Usluge -->
   <url>
     <loc>https://rsketering.com/ketering-za-proslave/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <url>
     <loc>https://rsketering.com/ketering-za-decije-rodjendane/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://rsketering.com/ketering-za-firme/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://rsketering.com/prostor-za-proslave/</loc>
-    <lastmod>2026-06-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <url>
     <loc>https://rsketering.com/posni-ketering/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <lastmod>2026-10-05</lastmod>
+  </url>
+
+  <url>
+    <loc>https://rsketering.com/ketering-za-firme/</loc>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- Galerija -->
   <url>
     <loc>https://rsketering.com/ketering-slike/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- Kontakt -->
   <url>
     <loc>https://rsketering.com/ketering-kontakt/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- Zaposlenje -->
   <url>
     <loc>https://rsketering.com/zaposlenje-ketering-rs/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <!-- Pravne stranice -->
   <url>
     <loc>https://rsketering.com/politika-privatnosti/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <url>
     <loc>https://rsketering.com/uslovi-koriscenja/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
   <url>
     <loc>https://rsketering.com/politika-kolacica/</loc>
-    <lastmod>2026-01-02</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <lastmod>2026-10-05</lastmod>
   </url>
 
 </urlset>
