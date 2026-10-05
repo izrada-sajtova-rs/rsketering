@@ -1,7 +1,15 @@
-﻿// Nav bar
+// Nav bar
 document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.querySelector(".mobile-toggle")
   const navMenu = document.querySelector(".nav-menu")
+
+  const closeNav = () => {
+    navMenu.classList.remove("open")
+    toggleButton.classList.remove("open")
+    toggleButton.setAttribute("aria-expanded", "false")
+    document.documentElement.classList.remove("nav-locked")
+    document.body.classList.remove("nav-locked")
+  }
 
   if (toggleButton && navMenu) {
     toggleButton.setAttribute("aria-expanded", "false")
@@ -18,19 +26,17 @@ document.addEventListener("DOMContentLoaded", () => {
       document.documentElement.classList.toggle("nav-locked", isOpen)
       document.body.classList.toggle("nav-locked", isOpen)
     })
+
+    document.addEventListener("click", (event) => {
+      if (!navMenu.contains(event.target) && !toggleButton.contains(event.target) && navMenu.classList.contains("open")) {
+        closeNav()
+      }
+    })
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && navMenu.classList.contains("open")) closeNav()
+    })
   }
-
-  document.addEventListener("click", (event) => {
-    if (!navMenu || !toggleButton) return
-
-    if (!navMenu.contains(event.target) && !toggleButton.contains(event.target) && navMenu.classList.contains("open")) {
-      navMenu.classList.remove("open")
-      toggleButton.classList.remove("open")
-      toggleButton.setAttribute("aria-expanded", "false")
-      document.documentElement.classList.remove("nav-locked")
-      document.body.classList.remove("nav-locked")
-    }
-  })
 
   // Floating Call Button - now using anchor with href and onclick
   const callBtn = document.getElementById("call-btn")
@@ -38,121 +44,164 @@ document.addEventListener("DOMContentLoaded", () => {
   // Floating Music Button
   const musicBtn = document.getElementById("music-btn")
   const keteringMusic = document.getElementById("ketering-music")
-  let musicPlaying = false
 
   if (musicBtn && keteringMusic) {
+    musicBtn.setAttribute("aria-label", "Pusti ili zaustavi muziku")
+    musicBtn.setAttribute("aria-pressed", "false")
+
     musicBtn.addEventListener("click", () => {
-      if (musicPlaying) {
-        keteringMusic.pause()
-        musicBtn.classList.remove("playing")
-        musicPlaying = false
+      if (keteringMusic.paused) {
+        const started = keteringMusic.play()
+        if (started && started.catch) started.catch(() => {})
       } else {
-        keteringMusic.play()
-        musicBtn.classList.add("playing")
-        musicPlaying = true
+        keteringMusic.pause()
       }
     })
+
+    // Stanje dugmeta prati stvarno stanje audio elementa
+    const syncMusicBtn = () => {
+      const playing = !keteringMusic.paused
+      musicBtn.classList.toggle("playing", playing)
+      musicBtn.setAttribute("aria-pressed", String(playing))
+    }
+    keteringMusic.addEventListener("play", syncMusicBtn)
+    keteringMusic.addEventListener("pause", syncMusicBtn)
   }
 
   // Show/Hide Floating Buttons on Scroll
-  window.addEventListener("scroll", () => {
-    const scrolled = window.scrollY
-    const threshold = 500
-
-    if (scrolled > threshold) {
-      if (callBtn) callBtn.classList.add("visible")
-      if (musicBtn) musicBtn.classList.add("visible")
-    } else {
-      if (callBtn) callBtn.classList.remove("visible")
-      if (musicBtn) musicBtn.classList.remove("visible")
-    }
-  })
+  let floatingVisible = false
+  const updateFloating = () => {
+    const shouldShow = window.scrollY > 500
+    if (shouldShow === floatingVisible) return
+    floatingVisible = shouldShow
+    if (callBtn) callBtn.classList.toggle("visible", shouldShow)
+    if (musicBtn) musicBtn.classList.toggle("visible", shouldShow)
+  }
+  window.addEventListener("scroll", updateFloating, { passive: true })
+  updateFloating()
 
   // FAQ Toggle
-  document.querySelectorAll('.faq-question').forEach(button => {
-    button.addEventListener('click', () => {
-      const faqItem = button.parentElement;
-      const isActive = faqItem.classList.contains('active');
-      
-      document.querySelectorAll('.faq-item').forEach(item => {
-        item.classList.remove('active');
-      });
-      
+  const faqItems = document.querySelectorAll(".faq-item")
+  document.querySelectorAll(".faq-question").forEach((button) => {
+    button.setAttribute("aria-expanded", "false")
+    button.addEventListener("click", () => {
+      const faqItem = button.parentElement
+      const isActive = faqItem.classList.contains("active")
+
+      faqItems.forEach((item) => {
+        item.classList.remove("active")
+        const q = item.querySelector(".faq-question")
+        if (q) q.setAttribute("aria-expanded", "false")
+      })
+
       if (!isActive) {
-        faqItem.classList.add('active');
+        faqItem.classList.add("active")
+        button.setAttribute("aria-expanded", "true")
       }
-    });
-  });
+    })
+  })
 
   // Animated Counter for Statistics
   const animateCounter = (element, target, duration = 2000) => {
-    let current = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) {
-        element.textContent = Math.ceil(target);
-        clearInterval(timer);
-      } else {
-        element.textContent = Math.ceil(current);
-      }
-    }, 16);
-  };
+    const start = performance.now()
+    const step = (now) => {
+      const progress = Math.min((now - start) / duration, 1)
+      element.textContent = Math.ceil(progress * target)
+      if (progress < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }
 
-  const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-  };
+  const statNumbers = document.querySelectorAll(".stat-number")
+  if (statNumbers.length > 0) {
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          const target = parseInt(entry.target.getAttribute("data-target"), 10)
+          if (!isNaN(target)) animateCounter(entry.target, target)
+          observer.unobserve(entry.target)
+        })
+      }, { threshold: 0.5 })
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-        const target = parseInt(entry.target.getAttribute('data-target'));
-        animateCounter(entry.target, target);
-        entry.target.classList.add('animated');
-      }
-    });
-  }, observerOptions);
+      statNumbers.forEach((stat) => observer.observe(stat))
+    } else {
+      statNumbers.forEach((stat) => {
+        stat.textContent = stat.getAttribute("data-target")
+      })
+    }
+  }
 
-  document.querySelectorAll('.stat-number').forEach(stat => {
-    observer.observe(stat);
-  });
-// Gallery
-  const galleryItems = document.querySelectorAll(".gallery-item")
-  const lightbox = document.createElement("div")
-  lightbox.className = "lightbox"
+  // Gallery
+  const galleryItems = Array.from(document.querySelectorAll(".gallery-item")).filter((item) => item.querySelector("img"))
 
-  // Create Lightbox structure
-  lightbox.innerHTML = `
-    <span class="lightbox-close">&times;</span>
+  if (galleryItems.length > 0) {
+    const lightbox = document.createElement("div")
+    lightbox.className = "lightbox"
+    lightbox.setAttribute("role", "dialog")
+    lightbox.setAttribute("aria-modal", "true")
+    lightbox.setAttribute("aria-label", "Galerija slika")
+
+    // Create Lightbox structure
+    lightbox.innerHTML = `
+    <button class="lightbox-close" type="button" aria-label="Zatvori">&times;</button>
     <button class="lightbox-nav lightbox-prev" type="button" aria-label="Prethodna slika">&#10094;</button>
     <div class="lightbox-content">
-      <img src="/placeholder.svg" alt="Gallery Preview">
+      <img alt="">
     </div>
     <button class="lightbox-nav lightbox-next" type="button" aria-label="Sledeća slika">&#10095;</button>
   `
-  document.body.appendChild(lightbox)
+    document.body.appendChild(lightbox)
 
-  const lightboxImg = lightbox.querySelector("img")
-  const closeBtn = lightbox.querySelector(".lightbox-close")
-  const prevBtn = lightbox.querySelector(".lightbox-prev")
-  const nextBtn = lightbox.querySelector(".lightbox-next")
+    const lightboxImg = lightbox.querySelector("img")
+    const closeBtn = lightbox.querySelector(".lightbox-close")
+    const prevBtn = lightbox.querySelector(".lightbox-prev")
+    const nextBtn = lightbox.querySelector(".lightbox-next")
 
-  let currentIndex = 0
+    let currentIndex = 0
 
-  const images = Array.from(galleryItems).map((item) => {
-    const img = item.querySelector("img")
-    return img.src
-  })
+    // Bira varijantu iz <picture> koja odgovara ekranu (lazy slike još nemaju currentSrc)
+    const pickSource = (img) => {
+      const picture = img.closest("picture")
+      if (picture) {
+        const sources = picture.querySelectorAll("source[srcset]")
+        for (const source of sources) {
+          if (!source.media || window.matchMedia(source.media).matches) {
+            return source.srcset.split(",")[0].trim().split(/\s+/)[0]
+          }
+        }
+      }
+      return img.currentSrc || img.src
+    }
 
-  if (galleryItems.length > 0) {
+    const updateLightboxImage = () => {
+      const img = galleryItems[currentIndex].querySelector("img")
+      lightboxImg.src = pickSource(img)
+      lightboxImg.alt = img.alt || ""
+    }
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("active")
+      document.body.style.overflow = ""
+    }
+
+    const showPrev = () => {
+      currentIndex = currentIndex === 0 ? galleryItems.length - 1 : currentIndex - 1
+      updateLightboxImage()
+    }
+
+    const showNext = () => {
+      currentIndex = currentIndex === galleryItems.length - 1 ? 0 : currentIndex + 1
+      updateLightboxImage()
+    }
+
     galleryItems.forEach((item, index) => {
       item.addEventListener("click", (e) => {
         e.preventDefault()
         currentIndex = index
         updateLightboxImage()
         lightbox.classList.add("active")
-        document.body.style.overflow = "hidden" 
+        document.body.style.overflow = "hidden"
       })
     })
 
@@ -164,37 +213,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     prevBtn.addEventListener("click", (e) => {
       e.stopPropagation()
-      currentIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1
-      updateLightboxImage()
+      showPrev()
     })
 
     nextBtn.addEventListener("click", (e) => {
       e.stopPropagation()
-      currentIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1
-      updateLightboxImage()
+      showNext()
     })
 
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("active")) return
       if (e.key === "Escape") closeLightbox()
-      if (e.key === "ArrowLeft") prevBtn.click()
-      if (e.key === "ArrowRight") nextBtn.click()
+      if (e.key === "ArrowLeft") showPrev()
+      if (e.key === "ArrowRight") showNext()
     })
   }
 
-  function updateLightboxImage() {
-    lightboxImg.src = images[currentIndex]
-  }
-
-  function closeLightbox() {
-    lightbox.classList.remove("active")
-    document.body.style.overflow = ""
-  }
-
-  })
-
-// Praćenje klikova na .trackcall dugmad - slanje na eksterni server
-document.addEventListener("DOMContentLoaded", function () {
+  // Praćenje klikova na .trackcall dugmad - slanje na eksterni server
   document.querySelectorAll(".trackcall").forEach(function (el) {
     el.addEventListener("click", function () {
       const payload = JSON.stringify({
@@ -210,6 +245,4 @@ document.addEventListener("DOMContentLoaded", function () {
       }).catch(() => {});
     });
   });
-});
-
-
+})
