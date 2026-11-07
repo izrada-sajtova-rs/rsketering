@@ -32,7 +32,7 @@
   --color-cream: #f9f8f4;
   --color-white: #ffffff;
   --color-text-main: #333333;
-  --color-text-light: #777777;
+  --color-text-light: #6b6b6b;
   --color-olive-brown: rgb(132, 119, 84);
 
   /* TIPOGRAFIJA */
@@ -446,6 +446,119 @@ header {
   z-index: 1000;
   display: flex;
   align-items: center;
+  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+}
+
+/* Gornja traka: zlatna linija se iscrta preko cele širine i nestane,
+   logo i stavke menija se pojave jedna za drugom */
+header::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, var(--color-gold-primary) 18%, var(--color-gold-light) 50%, var(--color-gold-primary) 82%, transparent 100%);
+  transform-origin: left center;
+  transform: scaleX(0);
+  opacity: 0;
+  pointer-events: none;
+  animation: headerLine 2.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s;
+}
+
+header.is-scrolled {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.07);
+  border-bottom-color: rgba(197, 160, 89, 0.35);
+}
+
+header .logo {
+  display: inline-block;
+  animation: headerItemIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+}
+
+header .mobile-toggle {
+  animation: headerItemIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.3s backwards;
+}
+
+@media (min-width: 1031px) {
+  .nav-menu li {
+    animation: headerItemIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+  .nav-menu li:nth-child(1) { animation-delay: 0.2s; }
+  .nav-menu li:nth-child(2) { animation-delay: 0.26s; }
+  .nav-menu li:nth-child(3) { animation-delay: 0.32s; }
+  .nav-menu li:nth-child(4) { animation-delay: 0.38s; }
+  .nav-menu li:nth-child(5) { animation-delay: 0.44s; }
+  .nav-menu li:nth-child(6) { animation-delay: 0.5s; }
+  .nav-menu li:nth-child(7) { animation-delay: 0.56s; }
+  .nav-menu li:nth-child(8) { animation-delay: 0.62s; }
+  .nav-menu li:nth-child(9) { animation-delay: 0.68s; }
+
+  /* Zlatna crtica ispod stavke menija na hover i za aktivnu stranicu */
+  .nav-menu a {
+    position: relative;
+  }
+  .nav-menu a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 1px;
+    background: var(--color-gold-primary);
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-menu a:hover::after,
+  .nav-menu a.active::after {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
+}
+
+@keyframes headerItemIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+    filter: blur(3px);
+  }
+}
+@keyframes headerItemInLite {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+@media (max-width: 768px) {
+  header .logo,
+  header .mobile-toggle {
+    animation-name: headerItemInLite;
+  }
+}
+
+@keyframes headerLine {
+  0% {
+    transform: scaleX(0);
+    opacity: 1;
+  }
+  55% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header::after,
+  header .logo,
+  header .mobile-toggle,
+  .nav-menu li {
+    animation: none;
+  }
 }
 
 header .container {
@@ -567,7 +680,61 @@ header .container {
 }
 
 /* HERO */
+
+/* Animirani donji desni ugao: --hero-c1/2/3 skaliraju visinu tri krivine
+   (spoljašnja, zlatna linija, unutrašnja ivica slike) */
+@property --hero-c1 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+@property --hero-c2 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+@property --hero-c3 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+/* Gornji levi ugao: 0 = pokriven (ravan ugao), 1 = otkriven donji sloj (tri sloja kao dole desno) */
+@property --hero-tl1 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --hero-tl2 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+@property --hero-tl3 {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
 .hero {
+  --hero-c1: 1;
+  --hero-c2: 1;
+  --hero-c3: 1;
+  --hero-tl1: 0;
+  --hero-tl2: 0;
+  --hero-tl3: 0;
+  --hero-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  animation:
+    heroCurve1 1.8s var(--hero-ease) 0.1s backwards,
+    heroCurve2 1.8s var(--hero-ease) 0.3s backwards,
+    heroCurve3 1.8s var(--hero-ease) 0.5s backwards,
+    heroCornerTL1 4.7s linear 0.1s backwards,
+    heroCornerTL2 4.35s linear 0.3s backwards,
+    heroCornerTL3 4s linear 0.5s backwards;
+  border-top-left-radius: calc(45% * var(--hero-tl1)) calc(10% * var(--hero-tl1));
+  transition:
+    --hero-c1 1.4s var(--hero-ease),
+    --hero-c2 1.4s var(--hero-ease) 0.08s,
+    --hero-c3 1.4s var(--hero-ease) 0.16s;
   position: relative;
   height: 86vh;
   width: 100%;
@@ -578,8 +745,10 @@ header .container {
   margin-top: var(--header-height);
   overflow: hidden;
   background-color: var(--color-olive-brown);
-  border-bottom-right-radius: 60% 10%;
-  box-shadow: inset  -3px -3px 13px rgb(0, 0, 0);
+  border-bottom-right-radius: 60% calc(10% * var(--hero-c1));
+  box-shadow:
+    inset -3px -3px 13px rgb(0, 0, 0),
+    inset calc(3px * var(--hero-tl1)) calc(3px * var(--hero-tl1)) calc(13px * var(--hero-tl1)) rgba(0, 0, 0, var(--hero-tl1));
   border-bottom: 5px solid var(--color-gold-primary);
 }
 .hero-left {
@@ -592,8 +761,11 @@ header .container {
   width: 100%;
   height: 100%;
   z-index: 1;
-  border-bottom-right-radius: 60% 40%;
-  box-shadow: inset  -3px -3px 13px rgb(0, 0, 0);
+  border-bottom-right-radius: 60% calc(40% * var(--hero-c2));
+  border-top-left-radius: calc(45% * var(--hero-tl2)) calc(30% * var(--hero-tl2));
+  box-shadow:
+    inset -3px -3px 13px rgb(0, 0, 0),
+    inset calc(3px * var(--hero-tl2)) calc(3px * var(--hero-tl2)) calc(13px * var(--hero-tl2)) rgba(0, 0, 0, var(--hero-tl2));
   border-bottom: 5px solid var(--color-gold-primary);
 }
 .hero-bg::before {
@@ -603,8 +775,12 @@ header .container {
   width: 100%;
   height: 100%;
   border-right: #121212 solid 2px;
-  box-shadow: inset -5px -5px 13px rgb(0, 0, 0);
-  border-bottom-right-radius: 60% 80%;
+  border-left: #121212 solid calc(2px * var(--hero-tl3));
+  box-shadow:
+    inset -5px -5px 13px rgb(0, 0, 0),
+    inset calc(5px * var(--hero-tl3)) calc(5px * var(--hero-tl3)) calc(13px * var(--hero-tl3)) rgba(0, 0, 0, var(--hero-tl3));
+  border-bottom-right-radius: 60% calc(80% * var(--hero-c3));
+  border-top-left-radius: calc(45% * var(--hero-tl3)) calc(55% * var(--hero-tl3));
   z-index: 6;
 }
 .hero-bg img {
@@ -612,7 +788,282 @@ header .container {
   height: 100%;
   object-fit: cover;
   filter: brightness(0.4);
-  border-bottom-right-radius: 60% 80%;
+  border-bottom-right-radius: 60% calc(80% * var(--hero-c3));
+  border-top-left-radius: calc(45% * var(--hero-tl3)) calc(55% * var(--hero-tl3));
+}
+
+/* Zlatne linije gornjeg levog ugla: okvir maskiran tako da se vidi samo
+   luk (gornja ivica se postepeno gasi desno od krivine) */
+.hero-tl-line {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  border-top: calc(5px * var(--tl-line)) solid var(--color-gold-primary);
+  -webkit-mask:
+    linear-gradient(to right, #000 0%, #000 34%, transparent 56%),
+    linear-gradient(#000 0 0) padding-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: source-in, xor;
+  mask:
+    linear-gradient(to right, #000 0%, #000 34%, transparent 56%) intersect,
+    linear-gradient(#000 0 0) padding-box exclude,
+    linear-gradient(#000 0 0);
+}
+.hero-tl-outer {
+  --tl-line: var(--hero-tl1);
+  border-top-left-radius: calc(45% * var(--hero-tl1)) calc(10% * var(--hero-tl1));
+}
+.hero-tl-mid {
+  --tl-line: var(--hero-tl2);
+  border-top-left-radius: calc(45% * var(--hero-tl2)) calc(30% * var(--hero-tl2));
+}
+
+/* Odsjaj svetla koji klizi duž zlatne linije (::after) i unutrašnje ivice (picture::after).
+   Maska ostavlja vidljiv samo okvir, pa svetlo prati tačan oblik krivine. */
+.hero-bg::after,
+.hero-bg picture::after {
+  content: "";
+  position: absolute;
+  z-index: 7;
+  pointer-events: none;
+  background: linear-gradient(
+      100deg,
+      transparent 0%,
+      transparent 40%,
+      rgba(229, 207, 160, 0.5) 45%,
+      rgba(255, 246, 222, 1) 48.5%,
+      #ffffff 50%,
+      rgba(255, 246, 222, 1) 51.5%,
+      rgba(229, 207, 160, 0.5) 55%,
+      transparent 60%,
+      transparent 100%
+    ) border-box;
+  background-size: 250% 100%;
+  background-repeat: no-repeat;
+  mix-blend-mode: screen;
+  mix-blend-mode: plus-lighter;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) padding-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+}
+.hero-bg::after {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  border-bottom: 5px solid transparent;
+  border-bottom-right-radius: 60% calc(40% * var(--hero-c2));
+  animation: heroShine 7s ease-in-out 2s infinite;
+}
+.hero-bg picture::after {
+  inset: 0;
+  border-right: 3px solid transparent;
+  border-bottom-right-radius: 60% calc(80% * var(--hero-c3));
+  animation: heroShine 7s ease-in-out 2.45s infinite;
+}
+.hero.is-offscreen,
+.hero.is-offscreen .hero-bg::after,
+.hero.is-offscreen .hero-bg picture::after {
+  animation-play-state: paused;
+}
+
+@keyframes heroCurve1 { from { --hero-c1: 0; } }
+@keyframes heroCurve2 { from { --hero-c2: 0; } }
+@keyframes heroCurve3 { from { --hero-c3: 0; } }
+
+/* Gornji levi ugao: otvara se istim tempom i u isto vreme kao donji desni,
+   pa se vraća (unutrašnji sloj prvi pokriva, spoljašnji poslednji) */
+@keyframes heroCornerTL1 {
+  0% {
+    --hero-tl1: 0;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  38.3% {
+    --hero-tl1: 1;
+  }
+  66% {
+    --hero-tl1: 1;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  100% {
+    --hero-tl1: 0;
+  }
+}
+@keyframes heroCornerTL2 {
+  0% {
+    --hero-tl2: 0;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  41.4% {
+    --hero-tl2: 1;
+  }
+  63.2% {
+    --hero-tl2: 1;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  100% {
+    --hero-tl2: 0;
+  }
+}
+@keyframes heroCornerTL3 {
+  0% {
+    --hero-tl3: 0;
+    animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  45% {
+    --hero-tl3: 1;
+  }
+  60% {
+    --hero-tl3: 1;
+    animation-timing-function: cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  100% {
+    --hero-tl3: 0;
+  }
+}
+
+/* Tekst u hero delu */
+.hero-content .pretitle {
+  animation: heroTextPretitle 1.3s var(--hero-ease) 0.15s backwards;
+}
+.hero-content h1 {
+  animation: heroTextTitle 1.3s var(--hero-ease) 0.35s backwards;
+}
+.hero-content > p {
+  animation: heroTextFade 1.2s var(--hero-ease) 0.6s backwards;
+}
+.hero-cta .btn {
+  animation: heroTextFade 1s var(--hero-ease) 0.8s backwards;
+}
+.hero-cta .btn + .btn {
+  animation-delay: 0.92s;
+}
+
+/* Zlatni odsjaj koji jednom pređe preko naslova */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .hero-content h1 {
+    background: linear-gradient(
+        110deg,
+        var(--color-gold-primary) 0%,
+        var(--color-gold-primary) 42%,
+        #fff3d6 50%,
+        var(--color-gold-primary) 58%,
+        var(--color-gold-primary) 100%
+      )
+      0% 0 / 250% 100% no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation:
+      heroTextTitle 1.3s var(--hero-ease) 0.35s backwards,
+      heroTextShimmer 1.8s ease-in-out 1.5s backwards;
+  }
+}
+
+@keyframes heroTextPretitle {
+  from {
+    opacity: 0;
+    letter-spacing: 0.35em;
+    filter: blur(6px);
+  }
+}
+@keyframes heroTextTitle {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    clip-path: inset(100% -5% -20% -5%);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(-20% -5% -20% -5%);
+  }
+}
+@keyframes heroTextFade {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(4px);
+  }
+}
+@keyframes heroTextShimmer {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0% 0;
+  }
+}
+
+/* Mobilni: bez animacije razmaka slova i zamućenja (manje posla za procesor) */
+@media (max-width: 768px) {
+  .hero-content .pretitle {
+    animation-name: heroTextPretitleLite;
+  }
+  .hero-content > p,
+  .hero-cta .btn {
+    animation-name: heroTextFadeLite;
+  }
+}
+@keyframes heroTextPretitleLite {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+@keyframes heroTextFadeLite {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes heroShine {
+  0% {
+    background-position: 100% 0;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  38% {
+    background-position: 0% 0;
+    opacity: 1;
+  }
+  44%,
+  100% {
+    background-position: 0% 0;
+    opacity: 0;
+  }
+}
+
+/* Desktop: ugao se blago izdigne kad je kursor iznad hero sekcije */
+@media (hover: hover) and (pointer: fine) {
+  .hero:hover {
+    --hero-c1: 1.25;
+    --hero-c2: 1.12;
+    --hero-c3: 1.06;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;
+    transition: none;
+  }
+  .hero-bg::after,
+  .hero-bg picture::after,
+  .hero-tl-line {
+    display: none;
+  }
+  .hero-content .pretitle,
+  .hero-content h1,
+  .hero-content > p,
+  .hero-cta .btn {
+    animation: none;
+  }
 }
 .hero-content {
   position: relative;
@@ -798,7 +1249,7 @@ header .container {
 
 .price-unit-sm {
   font-size: 0.8rem;
-  color: #777;
+  color: #6b6b6b;
 }
 
 .price-card.featured {
@@ -932,7 +1383,7 @@ header .container {
 
 .menu-desc {
   font-size: 0.85rem;
-  color: #777;
+  color: #6b6b6b;
   font-style: italic;
 }
 
@@ -1089,7 +1540,7 @@ header .container {
 }
 
 .feature-box p {
-  color: #777;
+  color: #6b6b6b;
   margin-top: 15px;
 }
 
@@ -1165,7 +1616,7 @@ header .container {
 }
 
 .why-text {
-  color: #777;
+  color: #6b6b6b;
   margin-top: 15px;
 }
 
@@ -1202,7 +1653,7 @@ header .container {
   padding-top: 4.8rem;
 }
 .service-item p {
-  color: #777;
+  color: #6b6b6b;
   margin: 15px 0;
 }
 
@@ -1949,7 +2400,7 @@ footer a:hover {
 }
 
 .footer-legal-list a {
-  color: var(--color-text-light);
+  color: #999;
   text-decoration: none;
   transition: color 0.3s ease, transform 0.2s ease;
 }
