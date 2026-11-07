@@ -68,9 +68,24 @@ document.addEventListener("DOMContentLoaded", () => {
     keteringMusic.addEventListener("pause", syncMusicBtn)
   }
 
+  // Hero: pauziraj animaciju odsjaja dok sekcija nije na ekranu
+  const hero = document.querySelector(".hero")
+  if (hero && "IntersectionObserver" in window) {
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => hero.classList.toggle("is-offscreen", !entry.isIntersecting))
+    }).observe(hero)
+  }
+
   // Show/Hide Floating Buttons on Scroll
+  const siteHeader = document.querySelector("header")
+  let headerScrolled = false
   let floatingVisible = false
   const updateFloating = () => {
+    const scrolled = window.scrollY > 10
+    if (siteHeader && scrolled !== headerScrolled) {
+      headerScrolled = scrolled
+      siteHeader.classList.toggle("is-scrolled", scrolled)
+    }
     const shouldShow = window.scrollY > 500
     if (shouldShow === floatingVisible) return
     floatingVisible = shouldShow
